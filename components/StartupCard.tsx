@@ -3,6 +3,7 @@ import { EyeIcon } from "lucide-react"
 import Image from "next/image"
 import Link from "next/link"
 import { Button } from "./ui/button"
+import { StartupCardType } from "@/app/(root)/page"
 
 const StartupCard = ({ post }: {
     post: StartupCardType,
@@ -22,9 +23,9 @@ const StartupCard = ({ post }: {
 
             <div className="flex-between mt-5 gap-5">
                 <div className="flex-1">
-                    <Link href={`/user/${post.author._id}`}>
+                    <Link href={`/user/${post.author?._id}`}>
                         <p className="text-16-medium line-clamp-1">
-                            {post.author.name}
+                            {post.author?.name}
                         </p>
                     </Link>
                     <Link href={`/startup/${post._id}`}>
@@ -34,7 +35,7 @@ const StartupCard = ({ post }: {
                     </Link>
                 </div>
 
-                <Link href={`/user/${post.author._id}`}>
+                <Link href={`/user/${post.author?._id}`}>
                     <Image src="https://placehold.co/48x48" alt="placeholder" width={48} height={48} className="rounded-full" />
                 </Link>
 
@@ -49,7 +50,7 @@ const StartupCard = ({ post }: {
             </Link>
 
             <div className="flex-between mt-5 gap-3">
-                <Link href={`/?query=${post.category.toLowerCase()}`}>
+                <Link href={`/?query=${post.category?.toLowerCase()}`}>
                     <p className="text-16-medium">{post.category}</p>
                 </Link>
                 <Button className="startup-card_btn" asChild>
